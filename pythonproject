@@ -1,0 +1,75 @@
+stats = {
+    "health" : 0,
+    "intellect" : 0,
+"confidence" : 0,
+"energy": 0,
+"social": 0
+}
+
+name = input("What is your name? ")
+print("Welcome to The Life of a Student, " + name + "!")
+
+def call_day():
+    choice = input("Its 11PM - Go to sleep(A) or stay up(B)?")
+    if choice == "A": #Start of Day 1 - Sleep
+        print("You wake up a 7AM for class, getting 8 hours of sleep. +1 energy")
+        stats["energy"] += 1
+        choice2 = input("While in class, you get a call from your friend. - Answer(A) or call back after class(B)?")
+        if choice2 == "A": # Answer friend
+            print("Your friend thanks you for answering and you talk for 10 minutes.  + 1 social")
+            stats["social"] += 1
+        elif choice2 == "B": # Decline
+            print("Your teacher gives you a cheat sheet for the test.  + 1 intellect")
+            stats["intellect"] += 1
+        else:
+            print("Please enter a valid option (A or B).")
+
+    elif choice == "B": #Start of day 1 - Stay up
+        print("You doomscroll until 2AM. You miss your 7AM alarm. -1 energy")
+        stats["energy"] -= 1
+        choice3 = input("You're already going to be late to class - do you show up late(A) or skip(B)?")
+        if choice3 == "A": # Late to class
+            print("Your teacher calls you out for being late. -1 Confidence")
+            stats["confidence"] -= 1
+            print("You’re given a question to compensate for your tardiness.")
+            q_answer = input("Which command can be changed? (A)Tuple or (B)List?")
+            if q_answer == "A":
+                print("Incorrect! -1 confidence")
+                stats["confidence"] -= 1
+            elif q_answer == "B":
+                print("Correct! +1 confidence")
+                stats["confidence"] += 1
+            else:
+                print("Please enter a valid option (A or B).")
+        if choice3 == "B":
+            print("A large amount of free time has opened up.")
+            choice4 = input("Do you study(A) or hang out with friends(B)?")
+            if choice4 == "A":
+                print("You decided to stay in and study for an upcoming exam. +1 intellect, -1 social")
+                stats["intellect"] += 1
+                stats["social"] -= 1
+            if choice4 == "B":
+                print("You met up with friends at the mall. +1 social -1 intellect")
+                stats["social"] += 1
+                stats["intellect"] -= 1
+    else:
+        print("Please enter a valid option (A or B).")
+
+    end_day_choice = input("Your plans are done for the day. Do you get food(A) or study(B)")
+    if end_day_choice == "A":
+        print("You grab food. + 1 Health")
+        stats["health"] += 1
+    elif end_day_choice == "B":
+        print("You revise a research paper. + 1 intellect, -1 health")
+        stats["intellect"] += 1
+        stats["health"] -= 1
+
+
+
+call_day()
+
+def mad_day():
+    volunteer_choice = input("Today is Mad Day on the FGCU campus. You're attending and must pick an organization to help with, choose one of the following:\n Habitat for Humanity(A) \n Calusa Nature Center(B) \n The American Cancer Society(C) \n FGCU Food Forest(D) \n Enter here:"
+                            )
+mad_day()
+print(stats)
