@@ -69,7 +69,7 @@ def call_day():
 call_day()
 
 def mad_day():
-    volunteer_choice = input("Today is Mad Day on the FGCU campus. You're attending and must pick an organization to help with, choose one of the following:\n Habitat for Humanity(A) \n Calusa Nature Center(B) \n The American Cancer Society(C) \n FGCU Food Forest(D) \n Enter here:"
+    volunteer_choice = input("Today is Mad Day on the FGCU campus. You're attending and must pick an organization to help with, choose one of the following:\n (A) Habitat for Humanity \n (B) Calusa Nature Center \n (C) The American Cancer Society \n (D) FGCU Food Forest \n Enter here:"
                             )
 mad_day()
 print(stats)
