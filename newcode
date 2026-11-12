@@ -71,7 +71,7 @@ def d1_BB():
 
 #Ends first day
 def d1_close():
-    end_day_choice = input("Your plans are done for the day. Do you: \n (A) food \n (B) study \n Enter Here:")
+    end_day_choice = input("Your plans are done for the day. Do you: \n (A) Go get food \n (B) study \n Enter Here:")
     if end_day_choice == "A":
         print("You grab food. + 1 Health")
         stats["health"] += 1
@@ -107,7 +107,7 @@ def mad_day():
         mad_day()
 
 def h4h_work():
-    h4h_work_choice = input("When you arrive at Habitat For Humanity, you're presented with two options: \n (A) Paint walls \n (B)Clean sites \n Enter Here:")
+    h4h_work_choice = input("When you arrive at Habitat For Humanity, you're presented with two options: \n (A) Paint walls \n (B) Clean sites \n Enter Here:")
     if h4h_work_choice == "A":
         print("You paint a butterfly mural on the wall and are praised for your work. +1 Confidence")
         stats["confidence"] += 1
@@ -187,12 +187,95 @@ def weekday():
         print("You spend an hour at the gym. +1 health, -1 energy")
         stats["health"] += 1
         stats["energy"] -= 1
+        weekday_exercise()
     elif morning_choice == "B":
         print("You sleep in 10:30AM and feel prepared for the day. +1 energy, -1 health")
         stats["health"] -= 1
         stats["energy"] += 1
+        sleep_in_extra()
     else:
         print("Please enter a valid option (A or B).")
         weekday()
+
+#Weekday Wake up to exercise
+def weekday_exercise():
+    morning_exercise = input("After you have exercised, Do you: \n (A) Go get food to fuel yourself \n (B) Return to your room and prepare for class \n Enter Here:")
+    if morning_exercise == "A":
+        print("You go get a smoothie and it helps you re-energize. +1 energy")
+        stats["energy"] += 1
+        After_food()
+    elif morning_exercise == "B":
+        print("You go home,shower, change, and prepare for class. +1 health")
+        stats["health"] += 1
+        return_to_dorm()
+    else:
+        print("Please enter a valid option (A or B).")
+        weekday_exercise()
+
+#After you have eaten
+def After_food():
+    after = input("You return to your dorm dirty and realize your running behind. Do you: \n (A) Rush a quick shower to clean yourself \n (B) Skip the shower and get to class \n Enter Here:")
+    if after == "A":
+        print("You are clean but arrive to late class and miss the pop quiz. -1 intellect")
+        stats["intellect"] -= 1
+    elif after == "B":
+        print("You skip the shower and get to class, but you smell. -1 health")
+        stats["health"] -= 1
+    else:
+        print("Please enter a valid option (A or B).")
+        After_food()
+
+#Return to dorm
+def return_to_dorm():
+    return_dorm = input("You never stopped to get anything to eat, Do you: \n (A) Wait until lunch \n (B) Make a quick stop to grab food on your way to class \n Enter Here:")
+    if return_dorm == "A":
+        print("Your stomach hurts from starvation. -1 health")
+        stats["health"] -= 1
+    elif return_dorm == "B":
+        print("You get to class late and miss the pop quiz. -1 intellect")
+        stats["intellect"] -= 1
+    else:
+        print("Please enter a valid option (A or B).")
+        return_to_dorm()
+
+#Sleep in a few extra hours
+def sleep_in_extra():
+    sleep_in = input("You wake up with plenty of time before class, do you: \n (A) Get up and do your morning routine \n (B) Sit in bed longer and use your phone \n Enter Here:")
+    if sleep_in == "A":
+        print("You showered, made your bed, ate, and then brushed your teeth. +1 health")
+        stats["health"] += 1
+        text_from_friend()
+    elif sleep_in == "B":
+        print("You use your phone until 15 minutes before class, skipping your morning routine. -1 health")
+        stats["health"] -= 1
+        use_phone_bed()
+    else:
+        print("Please enter a valid option (A or B).")
+        sleep_in_extra()
+
+def text_from_friend():
+    text_friend = input("You get a text from your friend asking you to wait 5 minutes and walk to class together, do you: \n (A) Wait \n (B) Pretend you never saw the text and walk to class without them \n Enter Here:")
+    if text_friend == "A":
+        print("You wait for your friend and walk to class together. +1 social")
+        stats["social"] += 1
+    elif text_friend == "B":
+        print("You walk to class all alone and get jealous of the groups when walking by. -1 social")
+        stats["social"] -= 1
+    else:
+        print("Please enter a valid option (A or B).")
+        text_from_friend()
+
+def use_phone_bed():
+    bed_phone = input("After class you feel both hungry and dirty, do you: \n (A) Stop and get breakfast \n (B) Go back to your room to clean yourself \nEnter Here:")
+    if bed_phone == "A":
+        print("You put in your order and have to wait 45 minutes before you can get your food. -1 health")
+        stats["health"] -= 1
+    elif bed_phone == "B":
+        print("You head back to your room to clean yourself. +1 health")
+        stats["health"] += 1
+    else:
+        print("Please enter a valid option (A or B).")
+        use_phone_bed()
+
 weekday()
 print(stats)
