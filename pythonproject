@@ -10,7 +10,7 @@ class Player:
             "social": 0
         }
 
-    #Changes a stat by the given amount (use a negative number to decrease)
+    #Changes a stat by the given amount (uses a negative number to decrease)
     def change_stat(self, stat, amount):
         self.stats[stat] += amount
 
@@ -56,11 +56,25 @@ def d1_B():
     if choice3 == "A":  # Late to class
         print("Your teacher calls you out for being late. -1 Confidence")
         player.change_stat("confidence", -1)
+        d1_question()
     elif choice3 == "B":
             print("A large amount of free time has opened up.")
             d1_BB()
     else:
+        print("Please enter a valid option (A or B).")
         d1_B()
+def d1_question():
+    print("You’re given a question to compensate for your tardiness.")
+    q_answer = input("Which command can be changed? \n(A)Tuple \n(B)List? \nEnter Here:")
+    if q_answer == "A":
+        print("Incorrect! -1 confidence")
+        player.change_stat('confidence', -1)
+    elif q_answer == "B":
+        print("Correct! +1 confidence")
+        player.change_stat('confidence', 1)
+    else:
+        print("Please enter a valid option (A or B).")
+        d1_question()
 
 #Free time choice
 def d1_BB():
